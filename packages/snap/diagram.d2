@@ -1,10 +1,18 @@
-connect snap -> connection request -> Connect -> Confirm -> onInstall
+connectSnap -> onInstall
+
 onInstall: {
 
-derivePublicKey -> lookUpAccountByKey -> account
-account.shape: diamond
+derivePublicKey -> lookupAccountByKey -> isExistingAccount
+isExistingAccount.shape: diamond
 
-account -> dialog to copy public key:no
-account -> importAccount:yes
+isExistingAccount -> copyPublicKey:no
 
+copyPublicKey -> _.create account using publicKey
+_.create account using publicKey -> checkAgain -> lookupAccountByKey
+
+isExistingAccount -> fetchAccountDetails:yes
+
+fetchAccountDetails -> saveAccountDetails -> createSession
 }
+
+eos_requestPermissions
