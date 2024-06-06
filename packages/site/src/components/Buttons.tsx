@@ -122,3 +122,11 @@ export const HeaderButtons = () => {
     </ConnectedContainer>
   );
 };
+
+export const CreateAccountButton = (props: ComponentProps<typeof Button>) => {
+  return <Button {...props}>Create account</Button>;
+};
+
+export const ImportAccountButton = (props: ComponentProps<typeof Button>) => {
+  return <Button {...props}>Import account</Button>;
+};

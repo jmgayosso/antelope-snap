@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import {
@@ -6,6 +7,8 @@ import {
   ReconnectButton,
   SendHelloButton,
   Card,
+  CreateAccountButton,
+  ImportAccountButton,
 } from '../components';
 import { defaultSnapOrigin } from '../config';
 import {
@@ -105,6 +108,7 @@ const Index = () => {
   const { isFlask, snapsDetected, installedSnap } = useMetaMask();
   const requestSnap = useRequestSnap();
   const invokeSnap = useInvokeSnap();
+  const [name, setName] = useState('');
 
   const isMetaMaskReady = isLocalSnap(defaultSnapOrigin)
     ? isFlask
@@ -112,6 +116,15 @@ const Index = () => {
 
   const handleSendHelloClick = async () => {
     await invokeSnap({ method: 'hello' });
+  };
+
+  const handleSendTestClick = async () => {
+    const accountName = await invokeSnap({ method: 'test' });
+    setName(accountName);
+  };
+
+  const handleSendImportClick = async () => {
+    await invokeSnap({ method: 'import' });
   };
 
   return (
@@ -179,6 +192,42 @@ const Index = () => {
             button: (
               <SendHelloButton
                 onClick={handleSendHelloClick}
+                disabled={!installedSnap}
+              />
+            ),
+          }}
+          disabled={!installedSnap}
+          fullWidth={
+            isMetaMaskReady &&
+            Boolean(installedSnap) &&
+            !shouldDisplayReconnectButton(installedSnap)
+          }
+        />
+        <Card
+          content={{
+            title: 'Create account',
+            description: name,
+            button: (
+              <CreateAccountButton
+                onClick={handleSendTestClick}
+                disabled={!installedSnap}
+              />
+            ),
+          }}
+          disabled={!installedSnap}
+          fullWidth={
+            isMetaMaskReady &&
+            Boolean(installedSnap) &&
+            !shouldDisplayReconnectButton(installedSnap)
+          }
+        />
+        <Card
+          content={{
+            title: 'Import account',
+            description: name,
+            button: (
+              <ImportAccountButton
+                onClick={handleSendImportClick}
                 disabled={!installedSnap}
               />
             ),
