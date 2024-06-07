@@ -114,17 +114,9 @@ const Index = () => {
     ? isFlask
     : snapsDetected;
 
-  const handleSendHelloClick = async () => {
-    await invokeSnap({ method: 'hello' });
-  };
-
   const handleSendTestClick = async () => {
-    const accountName = await invokeSnap({ method: 'test' });
-    setName(accountName);
-  };
-
-  const handleSendImportClick = async () => {
-    await invokeSnap({ method: 'import' });
+    const accountName = await invokeSnap({ method: 'eos_connectAccount' });
+    // setName(accountName);
   };
 
   return (
@@ -186,48 +178,12 @@ const Index = () => {
         )}
         <Card
           content={{
-            title: 'Send Hello message',
+            title: 'Connect account',
             description:
-              'Display a custom message within a confirmation screen in MetaMask.',
-            button: (
-              <SendHelloButton
-                onClick={handleSendHelloClick}
-                disabled={!installedSnap}
-              />
-            ),
-          }}
-          disabled={!installedSnap}
-          fullWidth={
-            isMetaMaskReady &&
-            Boolean(installedSnap) &&
-            !shouldDisplayReconnectButton(installedSnap)
-          }
-        />
-        <Card
-          content={{
-            title: 'Create account',
-            description: name,
+              'Create or import the EOS account associated with your metamask seed phrase.',
             button: (
               <CreateAccountButton
                 onClick={handleSendTestClick}
-                disabled={!installedSnap}
-              />
-            ),
-          }}
-          disabled={!installedSnap}
-          fullWidth={
-            isMetaMaskReady &&
-            Boolean(installedSnap) &&
-            !shouldDisplayReconnectButton(installedSnap)
-          }
-        />
-        <Card
-          content={{
-            title: 'Import account',
-            description: name,
-            button: (
-              <ImportAccountButton
-                onClick={handleSendImportClick}
                 disabled={!installedSnap}
               />
             ),

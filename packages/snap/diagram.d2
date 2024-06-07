@@ -12,7 +12,6 @@ _.create account using publicKey -> checkAgain -> lookupAccountByKey
 
 isExistingAccount -> fetchAccountDetails:yes
 
-fetchAccountDetails -> saveAccountDetails -> createSession
+fetchAccountDetails -> saveAccountDetails -> derivePrivateKey -> createSession
 }
 
-eos_requestPermissions
