@@ -1,43 +1,38 @@
-# TypeScript Example Snap Front-end
+# create-svelte
 
-This project was bootstrapped with [Gatsby](https://www.gatsbyjs.com/).
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-## Available Scripts
+## Creating a project
 
-In the project directory, you can run:
+If you're seeing this, you've probably already done this step. Congrats!
 
-### `yarn start`
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-Runs the app in the development mode.\
-Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
+# create a new project in my-app
+npm create svelte@latest my-app
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Developing
 
-### `yarn build`
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-Builds the app for production to the `public` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm run dev
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-See the section about [deployment](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/) for more information.
+## Building
 
-## Environment variables
+To create a production version of your app:
 
-Gatsby has built-in support for loading environment variables into the browser and Functions. Loading environment variables into Node.js requires a small code snippet.
+```bash
+npm run build
+```
 
-In development, Gatsby will load environment variables from a file named `.env.development`. For builds, it will load from `.env.production`.
+You can preview the production build with `npm run preview`.
 
-By default you can use the `SNAP_ORIGIN` variable (used in `src/config/snap.ts`) to define a production origin for you snap (eg. `npm:MyPackageName`). If not defined it will defaults to `local:http://localhost:8080`.
-
-A `.env` file template is available, to use it rename `.env.production.dist` to `.env.production`
-
-To learn more visit [Gatsby documentation](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/)
-
-## Learn More
-
-You can learn more in the [Gatsby documentation](https://www.gatsbyjs.com/docs/).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
