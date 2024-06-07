@@ -105,3 +105,16 @@ export async function getSnapsProvider() {
 
 	return null;
 }
+
+/**
+ * Check if the current provider is a Flask provider by checking the client version.
+ *
+ * @param provider - The provider to use to check for Flask. Defaults to
+ * `window.ethereum`.
+ * @returns True if the provider is a Flask provider, false otherwise.
+ */
+export async function checkIsFlask(provider: MetaMaskInpageProvider | null) {
+	if (!provider) return false;
+	const clientVersion = await provider.request({ method: 'web3_clientVersion' });
+	return (clientVersion as string[])?.includes('flask');
+}

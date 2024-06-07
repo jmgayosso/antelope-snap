@@ -1,3 +1,4 @@
+import { env } from '$env/dynamic/public';
 /**
  * The snap origin to use.
  * Will default to the local hosted snap if no value is provided in environment.
@@ -7,5 +8,5 @@
  * there. Running `yarn build` will automatically use the production environment variables.
  */
 export const defaultSnapOrigin =
-  // eslint-disable-next-line no-restricted-globals
-  process.env.SNAP_ORIGIN ?? `local:http://localhost:8080`;
+	// eslint-disable-next-line no-restricted-globals
+	env.PUBLIC_SNAP_ORIGIN ?? `local:http://localhost:8080`;
