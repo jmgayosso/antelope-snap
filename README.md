@@ -51,3 +51,6 @@ script in the `lavamoat.allowScripts` section of `package.json`.
 
 See the documentation for [@lavamoat/allow-scripts](https://github.com/LavaMoat/LavaMoat/tree/main/packages/allow-scripts)
 for more information.
+
+## Troubleshooting
+If a runtime error occurred during the execution of your snap's RPC call, or if you use console.log within your snap's code, the output will not appear in the Dapp's Dev Tools console. Instead, you'll need to look to the Dev Tools attached to the background.html file of the extension. You can do this by right-clicking on the MetaMask extension logo in your browser's toolbar, then choosing "Manage extension". There, in the upper-right hand corner, make sure "Developer mode" is enabled, then click on "background.html". This will open a separate Dev Tools window which will show any errors or logs coming from the snap's execution.

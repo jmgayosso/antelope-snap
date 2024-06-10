@@ -1,6 +1,8 @@
-import { defaultSnapOrigin } from '../config/snap';
 import { installedSnap } from '../store';
 import { request } from './request';
+
+import { defaultSnapOrigin } from '../config/snap';
+export { defaultSnapOrigin } from '../config/snap';
 
 /**
  * Check if a snap ID is a local snap ID.
@@ -37,7 +39,7 @@ export const setSnap = async () => {
  * @param version - The requested version.
  * @returns The `wallet_requestSnaps` wrapper.
  */
-export const requestSnap = async (id: string, version?: string) => {
+export const requestSnap = async (id?: string, version?: string) => {
 	const snapId = id || defaultSnapOrigin;
 	const snaps = (await request({
 		method: 'wallet_requestSnaps',

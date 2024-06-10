@@ -1,7 +1,6 @@
 import type { MetaMaskInpageProvider } from '@metamask/providers';
 import { derived, writable, type Readable, type Writable } from 'svelte/store';
-import { defaultSnapOrigin, type Snap } from './config/snap';
-import { isLocalSnap } from './lib/snap';
+import { isLocalSnap, defaultSnapOrigin, type Snap } from './lib/snap';
 
 export const snapProvider: Writable<MetaMaskInpageProvider | null> = writable(null);
 
