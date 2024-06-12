@@ -6,6 +6,7 @@
 	import { setSnap, requestSnap, invokeSnap } from '$lib/snap';
 	import flask_fox from '../assets/flask_fox.svg';
 	import { accountName } from '$lib/account';
+	// import type {RpcMethodTypes} from '@greymass/eos-snap';
 
 	let provider: MetaMaskInpageProvider;
 
@@ -33,7 +34,7 @@
 		accountName: string;
 		activeKey: string;
 		ownerKey: string;
-		chainID: string;
+		chainId: string;
 	};
 
 	async function handleFormSubmit(event: Event) {
@@ -43,7 +44,7 @@
 			accountName: formData.get('account') as string,
 			activeKey: formData.get('publicKey') as string,
 			ownerKey: formData.get('publicKey') as string,
-			chainID: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d'
+			chainId: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d'
 		};
 
 		const name = await createAccount(accountData, 'https://jungle4.greymass.com');
@@ -59,7 +60,7 @@
 			accountName: accountData.accountName,
 			activeKey: accountData.activeKey,
 			ownerKey: accountData.ownerKey,
-			network: accountData.chainID
+			network: accountData.chainId
 		};
 
 		try {
@@ -83,6 +84,11 @@
 			console.error('error getting response', error);
 		}
 	}
+
+	async function testTransaction() {
+		const result = await invokeSnap({ method: 'eos_signTransaction' });
+		console.log('result', result);
+	}
 </script>
 
 <h1>
@@ -103,6 +109,9 @@
 <p>The snap will need to be re-installed after any changes to the code.</p>
 
 <button on:click={connectAccount} disabled={!$isMetaMaskReady}> Connect EOS Account </button>
+
+<button on:click={testTransaction} disabled={!$isMetaMaskReady}>Test Signing Transaction</button>
+<hr />
 
 <h2>Create Jungle4 Account</h2>
 <form on:submit|preventDefault={handleFormSubmit}>

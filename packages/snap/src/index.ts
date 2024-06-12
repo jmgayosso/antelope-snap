@@ -1,5 +1,5 @@
 import { OnRpcRequestHandler } from '@metamask/snaps-sdk';
-import { connectAccount  } from './rpc';
+import { signTransaction, connectAccount } from './rpc';
 
 export * from './rpc-types';
 
@@ -14,13 +14,14 @@ export * from './rpc-types';
  * @throws If the request method is not valid for this snap.
  */
 export const onRpcRequest: OnRpcRequestHandler = async ({
-  origin,
   request,
 }) => {
-  console.log({origin, request});
   switch (request.method) {
     case 'eos_connectAccount':
       return await connectAccount();
+
+    case 'eos_signTransaction':
+      return await signTransaction();
 
     default:
       throw new Error('Method not found.');

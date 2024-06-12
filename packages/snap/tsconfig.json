@@ -1,7 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
+    "experimentalDecorators": true,
     "baseUrl": "./"
   },
-  "include": ["**/*.ts"]
+  "include": [
+    "src"
+  ]
 }

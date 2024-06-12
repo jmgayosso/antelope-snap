@@ -8,6 +8,7 @@ const config: SnapConfig = {
     port: 8080,
   },
   polyfills: {
+    crypto: true,
     buffer: true,
   },
 };

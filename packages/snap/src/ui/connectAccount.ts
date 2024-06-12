@@ -5,20 +5,20 @@ import {
   copyable,
 } from '@metamask/snaps-sdk';
 
-export async function confirmAccountImport(accountName: string) {
+export async function userConfirmedAccount(accountName: string) {
     return await snap.request({
       method: 'snap_dialog',
       params: {
         type: 'confirmation',
         content: panel([
           heading(`Account found: ${accountName}`),
-          text('Import this account'),
+          text('Use this account'),
         ]),
       },
     });
 }
 
-export async function noAccountFound(publicKey: string) {
+export async function alertNoAccountFound(publicKey: string) {
     await snap.request({
       method: 'snap_dialog',
       params: {
