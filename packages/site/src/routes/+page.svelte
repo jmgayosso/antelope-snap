@@ -6,6 +6,8 @@
 	import { setSnap, requestSnap, invokeSnap } from '$lib/snap';
 	import flask_fox from '../assets/flask_fox.svg';
 	import { accountName } from '$lib/account';
+	import CreateAccount from '../components/CreateAccount.svelte';
+	import { connectAccount, getConnectedAccount, testTransaction } from '$lib/rpc-methods';
 	// import type {RpcMethodTypes} from '@greymass/eos-snap';
 
 	let provider: MetaMaskInpageProvider;
@@ -19,76 +21,9 @@
 			provider = $snapProvider; // gotta be a better way of narrowing this type
 			isFlask.set(await checkIsFlask(provider));
 			setSnap();
+			getConnectedAccount();
 		}
 	});
-
-	async function connectAccount() {
-		const result = await invokeSnap({ method: 'eos_connectAccount' });
-		console.log('accountName', result);
-		accountName.set(result);
-	}
-
-	let account = { name: '', publicKey: '' };
-
-	type AccountData = {
-		accountName: string;
-		activeKey: string;
-		ownerKey: string;
-		chainId: string;
-	};
-
-	async function handleFormSubmit(event: Event) {
-		const formData = new FormData(event.target as HTMLFormElement);
-
-		const accountData: AccountData = {
-			accountName: formData.get('account') as string,
-			activeKey: formData.get('publicKey') as string,
-			ownerKey: formData.get('publicKey') as string,
-			chainId: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d'
-		};
-
-		const name = await createAccount(accountData, 'https://jungle4.greymass.com');
-
-		if (typeof name !== 'undefined') {
-			console.log(`Account ${name} created`);
-			connectAccount();
-		}
-	}
-
-	async function createAccount(accountData: AccountData, chainUrl: string) {
-		const data = {
-			accountName: accountData.accountName,
-			activeKey: accountData.activeKey,
-			ownerKey: accountData.ownerKey,
-			network: accountData.chainId
-		};
-
-		try {
-			const response = await fetch(`${chainUrl}/account/create`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(data)
-			});
-
-			console.log(response);
-
-			if (response.status === 201) {
-				console.log('success:', JSON.stringify(await response.text(), null, 2));
-				return accountData.accountName;
-			}
-
-			console.log('failure:', JSON.stringify(await response.text(), null, 2));
-		} catch (error) {
-			console.error('error getting response', error);
-		}
-	}
-
-	async function testTransaction() {
-		const result = await invokeSnap({ method: 'eos_signTransaction' });
-		console.log('result', result);
-	}
 </script>
 
 <h1>
@@ -101,27 +36,20 @@
 <p>Is flask: {$isFlask}</p>
 <p>Is metamask ready: {$isMetaMaskReady}</p>
 <p>Is snap installed: {isSnapInstalled}</p>
+<!-- <p>Installed snap: {JSON.stringify($installedSnap)}</p> -->
 
 <button on:click={() => requestSnap()} disabled={!$isMetaMaskReady}>
 	<img src={flask_fox} alt="Flask Fox" width="20" height="20" />
-	Install Snap
+	{isSnapInstalled ? 'Re-install snap' : 'Install snap'}
 </button>
+
 <p>The snap will need to be re-installed after any changes to the code.</p>
 
 <button on:click={connectAccount} disabled={!$isMetaMaskReady}> Connect EOS Account </button>
 
+<p>We disable the connection button when an account is already connected.</p>
+
 <button on:click={testTransaction} disabled={!$isMetaMaskReady}>Test Signing Transaction</button>
 <hr />
 
-<h2>Create Jungle4 Account</h2>
-<form on:submit|preventDefault={handleFormSubmit}>
-	<div>
-		<label for="account">Name:</label>
-		<input type="text" id="account" name="account" bind:value={account.name} />
-	</div>
-	<div>
-		<label for="account">PublicKey:</label>
-		<input type="text" id="account" name="publicKey" bind:value={account.publicKey} />
-	</div>
-	<button type="submit">Submit</button>
-</form>
+<CreateAccount />

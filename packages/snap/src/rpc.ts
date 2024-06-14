@@ -1,28 +1,33 @@
 import { assert } from '@metamask/snaps-sdk';
-import { Chains } from '@wharfkit/common';
-import { Session, SignedTransaction } from '@wharfkit/session';
+import { getCurrentChain, SupportedChain, supportedChains } from './lib/chains';
+import { Session } from '@wharfkit/session';
 import { WalletPluginPrivateKey } from '@wharfkit/wallet-plugin-privatekey';
-import { Client } from './api';
+import { ApiClient } from './api';
 import { derivePrivateKey, derivePublicKey } from './lib/keyDeriver';
+import { StateManager } from './lib/manageState';
 import { makeMockTransaction } from './lib/mockTransfer';
-import { userConfirmedAccount, alertNoAccountFound, userConfirmedTransaction } from './ui';
+import {
+  alertNoAccountFound,
+  userConfirmedAccount,
+  userConfirmedTransaction,
+} from './ui';
 
-// There's something that can be done here with the chain and chain ID
-// For example, we might want to use the chain ID to determine the chain URL
-// and we need to associate that to the coin type for the derivation path
-
-export async function connectAccount() {
-  const publicKey = await derivePublicKey();
-  const chain = {
-    id: Chains.Jungle4.id,
-    url: Chains.Jungle4.url,
-  }
-  const api = new Client(chain.url);
+export async function connectAccount(chainName: SupportedChain = 'Jungle4') {
+  const chain = supportedChains[chainName];
+  const publicKey = await derivePublicKey(chain);
+  const api = new ApiClient(chain.url);
   const account = await api.fetchAccountByKey(publicKey);
+  console.log(JSON.stringify(account));
+  console.log(JSON.stringify(chain));
 
   if (account) {
     const confirmed = await userConfirmedAccount(account.name);
     if (!confirmed) return null;
+    const state = new StateManager();
+    await state.set({
+      account: JSON.stringify(account),
+      currentChain: JSON.stringify(chain),
+    });
     return account.name;
   } else {
     await alertNoAccountFound(publicKey.toString());
@@ -30,54 +35,57 @@ export async function connectAccount() {
   }
 }
 
-
-
-export async function signTransaction() { // TODO: will need params
-  const publicKey = await derivePublicKey();
-  const chain = {
-    id: Chains.Jungle4.id,
-    url: Chains.Jungle4.url,
-  }
-  const api = new Client(chain.url);
+// TODO: will need params
+export async function signTransaction() {
+  console.log('signTransaction');
+  const chain = await getCurrentChain();
+  const api = new ApiClient(chain.url);
+  const publicKey = await derivePublicKey(chain);
   const account = await api.fetchAccountByKey(publicKey);
-  assert(account, 'Account not found')
-  const header = await api.getTransactionHeader();
+
+  assert(account, 'Account not found');
 
   // Will be replaced with actual transaction data from params
-  const memo = 'test'
+  const memo = 'test';
   const transferObject = {
-    from: account.name.toString(),
+    from: account.name,
     to: 'teamgreymass',
     quantity: '0.1337 EOS',
     memo: memo || 'wharfkit is the best <3',
-  }
+  };
 
-  const transaction = makeMockTransaction(account, header, transferObject) // TODO: will need params
+  const header = await api.getTransactionHeader();
+  const transaction = makeMockTransaction(account, header, transferObject); // TODO: will need params
+  console.log(JSON.stringify(transaction));
 
-  const confirmed = await userConfirmedTransaction(transferObject)
+  const confirmed = await userConfirmedTransaction(transferObject);
 
   if (confirmed) {
-    const privateKey = await derivePrivateKey();
-    assert(privateKey, 'Private key not found')
-    // const signature = privateKey.signDigest(transaction.signingDigest(chain.id))
-    // const signedTransaction = SignedTransaction.from({
-    //   ...transaction,
-    //   signatures: [signature],
-    // })
-    // const result = await api.pushTransaction(signedTransaction)
+    const privateKey = await derivePrivateKey(chain);
+    console.log(privateKey);
+    assert(privateKey, 'Private key not found');
     const sessionArgs = {
-      chain,
+      chain: {
+        id: chain.id,
+        url: chain.url,
+      },
       actor: account.name,
       permission: account.permission,
-      walletPlugin: new WalletPluginPrivateKey(privateKey)
-    }
-    const session = new Session(sessionArgs)
-    const result = await session.transact(transaction)
-    console.log(JSON.stringify(result))
-    return String(result)
-
+      walletPlugin: new WalletPluginPrivateKey(privateKey),
+    };
+    console.log(sessionArgs);
+    const session = new Session(sessionArgs);
+    console.log(JSON.stringify(session));
+    const result = await session.transact(transaction);
+    console.log(JSON.stringify(result));
+    return String(result);
   }
+  return null;
+}
 
-  return null
-
+export async function getConnectedAccount() {
+  const state = new StateManager();
+  const account = (await state.getValue('account')) as string;
+  if (!account) return null;
+  return account;
 }
