@@ -1,13 +1,13 @@
 {
   "version": "0.0.1",
-  "description": "An example Snap written in TypeScript.",
-  "proposedName": "TypeScript Example",
+  "description": "Antelope on Metamask",
+  "proposedName": "Antelope",
   "repository": {
     "type": "git",
     "url": "https://github.com/MetaMask/template-snap-monorepo.git"
   },
   "source": {
-    "shasum": "V1uGJrGwuqW6jk/9Qn0Lkg3aGyq+5EBTwQmIQs7t7Bs=",
+    "shasum": "4X7nZ0EHhVDhRIBfDNzV/T5771WqvxgL3qEEaYZwPmU=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -17,9 +17,7 @@
     }
   },
   "initialPermissions": {
-    "snap_manageState": {},
     "snap_dialog": {},
-    "endowment:page-home": {},
     "endowment:network-access": {},
     "endowment:rpc": {
       "dapps": true,
