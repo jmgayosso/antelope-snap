@@ -1,44 +1,42 @@
 <script lang="ts">
 	import { getPublicKey } from '$lib/rpc-methods';
 	import { onMount } from 'svelte';
+	import { isLowerCase, isNineChars, isSupportedChars, isValidFirstChar } from '$lib/validations';
 
 	let account = { name: '', publicKey: '' };
-
-	type AccountData = {
-		accountName: string;
-		activeKey: string;
-		ownerKey: string;
-		chainId: string;
-	};
+	let errors: string[] = [];
+	let created = false;
 
 	async function handleFormSubmit(event: Event) {
+		const chainId = '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d'; // Jungle4
+		const chainUrl = 'https://jungle4.greymass.com';
 		const formData = new FormData(event.target as HTMLFormElement);
 
-		const accountData: AccountData = {
-			accountName: formData.get('account') as string,
-			activeKey: formData.get('publicKey') as string,
-			ownerKey: formData.get('publicKey') as string,
-			chainId: '73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d'
-		};
+		const accountName = formData.get('name') as string;
+		const publicKey = formData.get('publicKey') as string;
 
-		const name = await createAccount(accountData, 'https://jungle4.greymass.com');
+		errors = []; // reset errors
 
-		if (typeof name !== 'undefined') {
-			console.log(`Account ${name} created`);
+		if (!isValidFirstChar(accountName)) {
+			errors = [...errors, 'Account name must start with a-z'];
 		}
-	}
+		if (!isNineChars(accountName)) {
+			errors = [...errors, 'Account name must be 9 characters'];
+		}
+		if (!isLowerCase(accountName)) {
+			errors = [...errors, 'Account name must be lowercase'];
+		}
+		if (!isSupportedChars(accountName)) {
+			errors = [...errors, 'Account name must contain only a-z and 1-5'];
+		}
 
-	onMount(async () => {
-		const publicKey = await getPublicKey();
-		account.publicKey = publicKey;
-	});
+		if (errors.length > 0) return;
 
-	async function createAccount(accountData: AccountData, chainUrl: string) {
-		const data = {
-			accountName: accountData.accountName,
-			activeKey: accountData.activeKey,
-			ownerKey: accountData.ownerKey,
-			network: accountData.chainId
+		const accountData = {
+			accountName: accountName + '.gm',
+			activeKey: publicKey,
+			ownerKey: publicKey,
+			network: chainId
 		};
 
 		try {
@@ -47,32 +45,114 @@
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(data)
+				body: JSON.stringify(accountData)
 			});
 
-			console.log(response);
-
-			if (response.status === 201) {
-				console.log('success:', JSON.stringify(await response.text(), null, 2));
-				return accountData.accountName;
+			if (response.status !== 201) {
+				// Server error
+				throw new Error(await response.text());
 			}
 
-			console.log('failure:', JSON.stringify(await response.text(), null, 2));
-		} catch (error) {
-			console.error('error getting response', error);
+			let result;
+
+			try {
+				// Parse response from text since successful response is empty
+				const text = await response.text();
+				result = text ? JSON.parse(text) : {};
+			} catch (e) {
+				throw new Error('Error parsing response');
+			}
+
+			if (result.message) {
+				// Some issue creating account
+				throw new Error(result.message);
+			} else {
+				// Account successfully created
+				account.name = accountData.accountName;
+				created = true;
+			}
+		} catch (e) {
+			if (e instanceof Error) {
+				errors = [...errors, e.message];
+				console.error('Network Error:', e);
+			}
 		}
 	}
+
+	onMount(async () => {
+		const publicKey = await getPublicKey();
+		account.publicKey = publicKey;
+	});
 </script>
 
-<h2>Create Jungle4 Account</h2>
-<form on:submit|preventDefault={handleFormSubmit}>
+{#if !created}
+	<h2>Create Jungle4 Account</h2>
+	<form on:submit|preventDefault={handleFormSubmit}>
+		<div id="name-field">
+			<label for="name">Account Name:</label>
+			<input
+				type="text"
+				id="name"
+				name="name"
+				maxlength="9"
+				size="9"
+				required
+				autocorrect="off"
+				autocapitalize="none"
+				spellcheck="false"
+				autocomplete="off"
+			/>
+		</div>
+		<div id="publicKey-field">
+			<label for="publicKey">PublicKey from Metamask:</label>
+			<input
+				readonly
+				type="text"
+				id="publicKey"
+				name="publicKey"
+				size={account.publicKey.length}
+				bind:value={account.publicKey}
+			/>
+		</div>
+		<button type="submit">Submit</button>
+		{#if errors.length > 0}
+			<ul>
+				{#each errors as error}
+					<li>{error}</li>
+				{/each}
+			</ul>
+		{/if}
+	</form>
+{:else}
+	<h2>Account {account.name} created</h2>
 	<div>
-		<label for="account">Name:</label>
-		<input type="text" id="account" name="account" bind:value={account.name} />
+		<label for="name">Account Name:</label>
+		<input type="text" id="name" name="name" readonly bind:value={account.name} />
 	</div>
 	<div>
-		<label for="account">PublicKey from Metamask:</label>
-		<input readonly type="text" id="account" name="publicKey" bind:value={account.publicKey} />
+		<label for="publicKey">PublicKey:</label>
+		<input
+			readonly
+			type="text"
+			id="publicKey"
+			name="publicKey"
+			size={account.publicKey.length}
+			bind:value={account.publicKey}
+		/>
 	</div>
-	<button type="submit">Submit</button>
-</form>
+{/if}
+
+<style>
+	#name-field {
+		position: relative;
+	}
+	#name-field::after {
+		content: '.gm';
+		position: absolute;
+		display: inline;
+		bottom: 0;
+	}
+	ul {
+		color: red;
+	}
+</style>
