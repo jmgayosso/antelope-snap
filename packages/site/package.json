@@ -17,7 +17,7 @@
 		"@metamask/providers": "^17.0.0",
 		"@wharfkit/session": "next",
 		"@wharfkit/transact-plugin-resource-provider": "^1.1.1",
-		"@wharfkit/wallet-plugin-metamask": "next",
+		"@wharfkit/wallet-plugin-metamask": "git+https://github.com/wharfkit/wallet-plugin-metamask.git#03bd2ff4996b797b46faf9f889a43e196944a31e",
 		"@wharfkit/web-renderer": "next"
 	},
 	"devDependencies": {

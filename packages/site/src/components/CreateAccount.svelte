@@ -83,6 +83,8 @@
 		const publicKey = await getPublicKey();
 		account.publicKey = publicKey;
 	});
+
+	$: console.log({ account });
 </script>
 
 {#if !created}

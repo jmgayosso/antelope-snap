@@ -77,6 +77,8 @@ export async function getSnapsProvider() {
 		return null;
 	}
 
+	console.log({ hasSnapsSupport: await hasSnapsSupport() });
+
 	if (await hasSnapsSupport()) {
 		return window.ethereum;
 	}
@@ -116,5 +118,6 @@ export async function getSnapsProvider() {
 export async function checkIsFlask(provider: MetaMaskInpageProvider | null) {
 	if (!provider) return false;
 	const clientVersion = await provider.request({ method: 'web3_clientVersion' });
+
 	return (clientVersion as string[])?.includes('flask');
 }
