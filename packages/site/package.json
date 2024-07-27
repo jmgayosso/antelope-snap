@@ -18,7 +18,7 @@
 		"@wharfkit/account-creation-plugin-metamask": "git+https://github.com/wharfkit/account-creation-plugin-metamask.git#master",
 		"@wharfkit/session": "next",
 		"@wharfkit/transact-plugin-resource-provider": "^1.1.1",
-		"@wharfkit/wallet-plugin-metamask": "git+https://github.com/wharfkit/wallet-plugin-metamask.git#master",
+		"@wharfkit/wallet-plugin-metamask": "next",
 		"@wharfkit/web-renderer": "next"
 	},
 	"devDependencies": {

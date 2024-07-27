@@ -4276,15 +4276,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wharfkit/wallet-plugin-metamask@git+https://github.com/wharfkit/wallet-plugin-metamask.git#master":
+"@wharfkit/wallet-plugin-metamask@npm:next":
   version: 1.0.0-rc3
-  resolution: "@wharfkit/wallet-plugin-metamask@https://github.com/wharfkit/wallet-plugin-metamask.git#commit=ae23425daead0ec4654b01ff57ecba3c7f67617c"
+  resolution: "@wharfkit/wallet-plugin-metamask@npm:1.0.0-rc3"
   dependencies:
     "@metamask/providers": ^17.0.0
     tslib: ^2.1.0
   peerDependencies:
     "@wharfkit/session": ^1.1.0
-  checksum: 69fb656b9f40b9bd9e0891ef0303ed25de23b6f73ed6676a80b04827c6addf0f18d18bf45007febc74c77b06cbfa8b286ff2322b1c2d79603e6d1ebda75862f5
+  checksum: 21196847c16d05e469a01a3e2cd8951a6c2da749d269c70676a11dd5b1ce10aa108f8672fa18769193e8b05b3f85ffc33fd864430d8c52fb4df439c4afbcd47c
   languageName: node
   linkType: hard
 
@@ -11384,7 +11384,7 @@ __metadata:
     "@wharfkit/account-creation-plugin-metamask": "git+https://github.com/wharfkit/account-creation-plugin-metamask.git#master"
     "@wharfkit/session": next
     "@wharfkit/transact-plugin-resource-provider": ^1.1.1
-    "@wharfkit/wallet-plugin-metamask": "git+https://github.com/wharfkit/wallet-plugin-metamask.git#master"
+    "@wharfkit/wallet-plugin-metamask": next
     "@wharfkit/web-renderer": next
     eslint: ^9.0.0
     eslint-config-prettier: ^9.1.0
