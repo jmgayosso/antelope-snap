@@ -1729,15 +1729,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@greymass/create-account@git+https://github.com/greymass/create-account.git#b4b4c61942ce955f7f87d9ab64f29bfd8922aa40":
-  version: 1.0.0
-  resolution: "@greymass/create-account@https://github.com/greymass/create-account.git#commit=b4b4c61942ce955f7f87d9ab64f29bfd8922aa40"
+"@greymass/create-account@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@greymass/create-account@npm:1.0.2"
   dependencies:
     "@greymass/return-path": ^0.0.1
     "@wharfkit/antelope": ^0.7.3
     "@wharfkit/signing-request": ^3.0.0
     tslib: ^2.1.0
-  checksum: 34ca853d311b0f9b22b7bd7790a32f428dfccee103e80526b544fdb0b5070bf4aa79a649ff61df564b971b370c8cce1749d7cd066f5c6e63a3a7967ade7b8c58
+  checksum: aad3d0feb158f77bc386dab689c167dfd3ae73259734a6affd8b826aab2c26680f6067c89bee3d3f5ea763ed48998980b41d49ddf8f1e6cf92f146c92df5e32f
   languageName: node
   linkType: hard
 
@@ -4139,6 +4139,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@wharfkit/account-creation-plugin-metamask@git+https://github.com/wharfkit/account-creation-plugin-metamask.git#master":
+  version: 1.0.0
+  resolution: "@wharfkit/account-creation-plugin-metamask@https://github.com/wharfkit/account-creation-plugin-metamask.git#commit=f0e67e1bb8616b39e98edb535098b1e92edf0b68"
+  dependencies:
+    "@greymass/create-account": ^1.0.2
+    "@metamask/providers": ^17.0.0
+    tslib: ^2.1.0
+  peerDependencies:
+    "@wharfkit/session": ^1.2.7
+  checksum: dad77a26ed585212a1312691fae4b0392f7e96259e8284de9d844a18bf05c65bdd8d6342df71190b9cbdbba04f427365bbcf99eb60a469fb7b8e3f5a0954639d
+  languageName: node
+  linkType: hard
+
 "@wharfkit/account@npm:^1.0.0":
   version: 1.1.1
   resolution: "@wharfkit/account@npm:1.1.1"
@@ -4263,16 +4276,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wharfkit/wallet-plugin-metamask@git+https://github.com/wharfkit/wallet-plugin-metamask.git#03bd2ff4996b797b46faf9f889a43e196944a31e":
-  version: 1.0.0-rc4
-  resolution: "@wharfkit/wallet-plugin-metamask@https://github.com/wharfkit/wallet-plugin-metamask.git#commit=03bd2ff4996b797b46faf9f889a43e196944a31e"
+"@wharfkit/wallet-plugin-metamask@git+https://github.com/wharfkit/wallet-plugin-metamask.git#master":
+  version: 1.0.0-rc3
+  resolution: "@wharfkit/wallet-plugin-metamask@https://github.com/wharfkit/wallet-plugin-metamask.git#commit=ae23425daead0ec4654b01ff57ecba3c7f67617c"
   dependencies:
-    "@greymass/create-account": "git+https://github.com/greymass/create-account.git#b4b4c61942ce955f7f87d9ab64f29bfd8922aa40"
     "@metamask/providers": ^17.0.0
     tslib: ^2.1.0
   peerDependencies:
-    "@wharfkit/session": ^1.2.7
-  checksum: 023713cb1aaeaad156f8e0e12ac48080d7b287c69d803f9da535d3b0dd5ab0644ee9f98e5f21ecfc43540b924df5283f3915257a58322640e0695f835f6a1fb8
+    "@wharfkit/session": ^1.1.0
+  checksum: 69fb656b9f40b9bd9e0891ef0303ed25de23b6f73ed6676a80b04827c6addf0f18d18bf45007febc74c77b06cbfa8b286ff2322b1c2d79603e6d1ebda75862f5
   languageName: node
   linkType: hard
 
@@ -11369,9 +11381,10 @@ __metadata:
     "@sveltejs/kit": ^2.0.0
     "@sveltejs/vite-plugin-svelte": ^3.0.0
     "@types/eslint": ^8.56.7
+    "@wharfkit/account-creation-plugin-metamask": "git+https://github.com/wharfkit/account-creation-plugin-metamask.git#master"
     "@wharfkit/session": next
     "@wharfkit/transact-plugin-resource-provider": ^1.1.1
-    "@wharfkit/wallet-plugin-metamask": "git+https://github.com/wharfkit/wallet-plugin-metamask.git#03bd2ff4996b797b46faf9f889a43e196944a31e"
+    "@wharfkit/wallet-plugin-metamask": "git+https://github.com/wharfkit/wallet-plugin-metamask.git#master"
     "@wharfkit/web-renderer": next
     eslint: ^9.0.0
     eslint-config-prettier: ^9.1.0
