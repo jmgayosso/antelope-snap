@@ -1,12 +1,12 @@
 {
-  "name": "@greymass/test-snap",
-  "version": "0.0.1",
-  "description": "The 'Hello, world!' of MetaMask Snaps, now written in TypeScript.",
+  "name": "@greymass/metamask-snap",
+  "version": "1.0.0",
+  "description": "MetaMask Snap allowing users to interact with Antelope networks",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+    "url": "https://github.com/@greymass/metamask-snap.git"
   },
-  "license": "(MIT-0 OR Apache-2.0)",
+  "license": "MIT",
   "main": "./dist/bundle.js",
   "files": [
     "dist/",

@@ -1741,6 +1741,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@greymass/metamask-snap@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@greymass/metamask-snap@workspace:."
+  dependencies:
+    "@lavamoat/allow-scripts": ^3.0.0
+    "@lavamoat/preinstall-always-fail": ^2.0.0
+    "@metamask/eslint-config": ^12.2.0
+    "@metamask/eslint-config-jest": ^12.1.0
+    "@metamask/eslint-config-nodejs": ^12.1.0
+    "@metamask/eslint-config-typescript": ^12.1.0
+    "@typescript-eslint/eslint-plugin": ^5.42.1
+    "@typescript-eslint/parser": ^5.42.1
+    eslint: ^9.0.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-import: ~2.26.0
+    eslint-plugin-jest: ^27.1.5
+    eslint-plugin-jsdoc: ^41.1.2
+    eslint-plugin-n: ^15.7.0
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-promise: ^6.1.1
+    prettier: ^2.7.1
+    prettier-plugin-packagejson: ^2.2.18
+    prettier-plugin-svelte: ^3.2.4
+    sharp: ^0.32.6
+    typescript: ^4.7.4
+    typescript-eslint: ^8.0.0-alpha.20
+  languageName: unknown
+  linkType: soft
+
 "@greymass/return-path@npm:^0.0.1":
   version: 0.0.1
   resolution: "@greymass/return-path@npm:0.0.1"
@@ -1749,42 +1778,6 @@ __metadata:
   checksum: 0f2b0d14e433aa46c0a575315bb4e2add9c75c5befd6eeccce83682bbbc2bb6a14b0011e1083e1fb7879230720504a03cc022630e208f6a1abb80ab13a4e38eb
   languageName: node
   linkType: hard
-
-"@greymass/test-snap@workspace:packages/snap":
-  version: 0.0.0-use.local
-  resolution: "@greymass/test-snap@workspace:packages/snap"
-  dependencies:
-    "@jest/globals": ^29.5.0
-    "@metamask/auto-changelog": ^3.4.4
-    "@metamask/eslint-config": ^12.2.0
-    "@metamask/eslint-config-jest": ^12.1.0
-    "@metamask/eslint-config-nodejs": ^12.1.0
-    "@metamask/eslint-config-typescript": ^12.1.0
-    "@metamask/key-tree": ^9.1.1
-    "@metamask/snaps-cli": ^6.1.0
-    "@metamask/snaps-jest": ^7.0.0
-    "@metamask/snaps-sdk": ^4.0.0
-    "@typescript-eslint/eslint-plugin": ^5.42.1
-    "@typescript-eslint/parser": ^5.42.1
-    "@wharfkit/antelope": ^1.0.7
-    "@wharfkit/common": ^1.2.2
-    buffer: ^6.0.3
-    eslint: ^8.45.0
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-import: ~2.26.0
-    eslint-plugin-jest: ^27.1.5
-    eslint-plugin-jsdoc: ^41.1.2
-    eslint-plugin-n: ^15.7.0
-    eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-promise: ^6.1.1
-    jest: ^29.5.0
-    prettier: ^2.7.1
-    prettier-plugin-packagejson: ^2.2.11
-    rimraf: ^3.0.2
-    ts-jest: ^29.1.0
-    typescript: ^4.7.4
-  languageName: unknown
-  linkType: soft
 
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
@@ -4139,16 +4132,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wharfkit/account-creation-plugin-metamask@git+https://github.com/wharfkit/account-creation-plugin-metamask.git#master":
-  version: 1.0.0
-  resolution: "@wharfkit/account-creation-plugin-metamask@https://github.com/wharfkit/account-creation-plugin-metamask.git#commit=f0e67e1bb8616b39e98edb535098b1e92edf0b68"
+"@wharfkit/account-creation-plugin-metamask@npm:next":
+  version: 1.0.0-RC3
+  resolution: "@wharfkit/account-creation-plugin-metamask@npm:1.0.0-RC3"
   dependencies:
     "@greymass/create-account": ^1.0.2
     "@metamask/providers": ^17.0.0
     tslib: ^2.1.0
   peerDependencies:
     "@wharfkit/session": ^1.2.7
-  checksum: dad77a26ed585212a1312691fae4b0392f7e96259e8284de9d844a18bf05c65bdd8d6342df71190b9cbdbba04f427365bbcf99eb60a469fb7b8e3f5a0954639d
+  checksum: 948d20a0b4843db276be25916ea7807153ce1439eb2513e049b90da25c519285ecd54b1f0dbd70581d7b175868d91e56c6624e464b8f915c37137de01df95e7c
   languageName: node
   linkType: hard
 
@@ -10972,35 +10965,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"root@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root@workspace:."
-  dependencies:
-    "@lavamoat/allow-scripts": ^3.0.0
-    "@lavamoat/preinstall-always-fail": ^2.0.0
-    "@metamask/eslint-config": ^12.2.0
-    "@metamask/eslint-config-jest": ^12.1.0
-    "@metamask/eslint-config-nodejs": ^12.1.0
-    "@metamask/eslint-config-typescript": ^12.1.0
-    "@typescript-eslint/eslint-plugin": ^5.42.1
-    "@typescript-eslint/parser": ^5.42.1
-    eslint: ^9.0.0
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-import: ~2.26.0
-    eslint-plugin-jest: ^27.1.5
-    eslint-plugin-jsdoc: ^41.1.2
-    eslint-plugin-n: ^15.7.0
-    eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-promise: ^6.1.1
-    prettier: ^2.7.1
-    prettier-plugin-packagejson: ^2.2.18
-    prettier-plugin-svelte: ^3.2.4
-    sharp: ^0.32.6
-    typescript: ^4.7.4
-    typescript-eslint: ^8.0.0-alpha.20
-  languageName: unknown
-  linkType: soft
-
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
   resolution: "run-parallel@npm:1.2.0"
@@ -11381,7 +11345,7 @@ __metadata:
     "@sveltejs/kit": ^2.0.0
     "@sveltejs/vite-plugin-svelte": ^3.0.0
     "@types/eslint": ^8.56.7
-    "@wharfkit/account-creation-plugin-metamask": "git+https://github.com/wharfkit/account-creation-plugin-metamask.git#master"
+    "@wharfkit/account-creation-plugin-metamask": next
     "@wharfkit/session": next
     "@wharfkit/transact-plugin-resource-provider": ^1.1.1
     "@wharfkit/wallet-plugin-metamask": next
@@ -11421,6 +11385,42 @@ __metadata:
   checksum: b5167a7142c1da704c0e3af85c402002b597081dd9575031a90b4f229ca5678e9a36e8a374f1814c8156a725d17008ae3bde63b92f9cfd132526379e580bec8b
   languageName: node
   linkType: hard
+
+"snap@workspace:packages/snap":
+  version: 0.0.0-use.local
+  resolution: "snap@workspace:packages/snap"
+  dependencies:
+    "@jest/globals": ^29.5.0
+    "@metamask/auto-changelog": ^3.4.4
+    "@metamask/eslint-config": ^12.2.0
+    "@metamask/eslint-config-jest": ^12.1.0
+    "@metamask/eslint-config-nodejs": ^12.1.0
+    "@metamask/eslint-config-typescript": ^12.1.0
+    "@metamask/key-tree": ^9.1.1
+    "@metamask/snaps-cli": ^6.1.0
+    "@metamask/snaps-jest": ^7.0.0
+    "@metamask/snaps-sdk": ^4.0.0
+    "@typescript-eslint/eslint-plugin": ^5.42.1
+    "@typescript-eslint/parser": ^5.42.1
+    "@wharfkit/antelope": ^1.0.7
+    "@wharfkit/common": ^1.2.2
+    buffer: ^6.0.3
+    eslint: ^8.45.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-import: ~2.26.0
+    eslint-plugin-jest: ^27.1.5
+    eslint-plugin-jsdoc: ^41.1.2
+    eslint-plugin-n: ^15.7.0
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-promise: ^6.1.1
+    jest: ^29.5.0
+    prettier: ^2.7.1
+    prettier-plugin-packagejson: ^2.2.11
+    rimraf: ^3.0.2
+    ts-jest: ^29.1.0
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
 
 "socks-proxy-agent@npm:^8.0.3":
   version: 8.0.4

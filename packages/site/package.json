@@ -1,7 +1,6 @@
 {
 	"name": "site",
-	"version": "0.0.1",
-	"private": true,
+	"version": "1.0.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -15,7 +14,7 @@
 	},
 	"dependencies": {
 		"@metamask/providers": "^17.0.0",
-		"@wharfkit/account-creation-plugin-metamask": "git+https://github.com/wharfkit/account-creation-plugin-metamask.git#master",
+		"@wharfkit/account-creation-plugin-metamask": "next",
 		"@wharfkit/session": "next",
 		"@wharfkit/transact-plugin-resource-provider": "^1.1.1",
 		"@wharfkit/wallet-plugin-metamask": "next",

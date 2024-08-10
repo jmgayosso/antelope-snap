@@ -1,17 +1,17 @@
 {
-  "name": "root",
-  "version": "0.1.0",
+  "name": "@greymass/metamask-snap",
+  "version": "1.0.0",
   "private": true,
   "description": "",
-  "homepage": "https://github.com/MetaMask/template-snap-monorepo#readme",
+  "homepage": "https://github.com/@greymass/metamask-snap#readme",
   "bugs": {
-    "url": "https://github.com/MetaMask/template-snap-monorepo/issues"
+    "url": "https://github.com/@greymass/metamask-snap/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MetaMask/template-snap-monorepo.git"
+    "url": "git+https://github.com/@greymass/metamask-snap.git"
   },
-  "license": "(MIT-0 OR Apache-2.0)",
+  "license": "MIT",
   "author": "",
   "type": "module",
   "workspaces": [
