@@ -5,13 +5,12 @@
 	import type { MetaMaskInpageProvider } from '@metamask/providers';
 	import { setSnap, requestSnap } from '$lib/snap';
 	import flask_fox from '../assets/flask_fox.svg';
-	import SessionKit, { Chains, Session } from '@wharfkit/session';
+	import SessionKit, { Chains, type Session } from '@wharfkit/session';
 	import WebRenderer from '@wharfkit/web-renderer';
 	import { type Writable, writable } from 'svelte/store';
 	import { TransactPluginResourceProvider } from '@wharfkit/transact-plugin-resource-provider';
 	import { WalletPluginMetaMask } from '@wharfkit/wallet-plugin-metamask';
 	import { AccountCreationPluginMetamask } from '@wharfkit/account-creation-plugin-metamask';
-	import CreateAccount from '../components/CreateAccount.svelte';
 
 	let provider: MetaMaskInpageProvider;
 	const session: Writable<Session | undefined> = writable();
