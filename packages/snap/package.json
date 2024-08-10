@@ -1,5 +1,5 @@
 {
-  "name": "@greymass/metamask-snap",
+  "name": "snap",
   "version": "1.0.0",
   "description": "MetaMask Snap allowing users to interact with Antelope networks",
   "repository": {
