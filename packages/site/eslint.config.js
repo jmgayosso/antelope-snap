@@ -17,6 +17,14 @@ export default [
 				...globals.browser,
 				...globals.node
 			}
+		},
+		plugins: {
+			import: null // Disable the eslint-plugin-import
+		},
+		rules: {
+			'import/no-named-as-default': 'off',
+			'n/no-exports-assign': 'off',
+			'@typescript-eslint/await-thenable': 'off'
 		}
 	},
 	{
