@@ -66,8 +66,8 @@
 	async function test() {
 		if ($session) {
 			const action = {
-				account: 'eosio.token',
-				name: 'transfer',
+				account: 'eosio',
+				name: 'sellram',
 				authorization: [
 					{
 						actor: $session.permissionLevel.actor,
@@ -75,15 +75,17 @@
 					}
 				],
 				data: {
-					from: $session.permissionLevel.actor,
-					to: 'teamgreymass',
-					quantity: '0.0001 EOS',
-					memo: 'test with metamask'
+					account: $session.permissionLevel.actor,
+					bytes: 10
 				}
 			};
-			$session.transact({
+			const response = await $session.transact({
 				actions: [action]
 			});
+
+			alert(
+				`Transaction successfully executed. Transaction ID: ${response.resolved?.transaction.id}`
+			);
 		}
 	}
 </script>
