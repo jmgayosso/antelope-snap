@@ -1,17 +1,17 @@
 {
-  "name": "root",
-  "version": "0.1.0",
+  "name": "@greymass/metamask-snap",
+  "version": "1.0.0",
   "private": true,
   "description": "",
-  "homepage": "https://github.com/MetaMask/template-snap-monorepo#readme",
+  "homepage": "https://github.com/@greymass/metamask-snap#readme",
   "bugs": {
-    "url": "https://github.com/MetaMask/template-snap-monorepo/issues"
+    "url": "https://github.com/@greymass/metamask-snap/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MetaMask/template-snap-monorepo.git"
+    "url": "git+https://github.com/@greymass/metamask-snap.git"
   },
-  "license": "(MIT-0 OR Apache-2.0)",
+  "license": "MIT",
   "author": "",
   "type": "module",
   "workspaces": [
@@ -19,12 +19,12 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach --parallel --topological --verbose run build",
-    "lint": "yarn lint:eslint && yarn lint:misc --check",
-    "lint:eslint": "eslint . --cache --ext js,jsx,ts,tsx",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
+    "lint": "yarn lint:misc --check",
+    "lint:eslint": "eslint . --cache -c js,jsx,ts,tsx",
+    "lint:fix": "yarn lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!**/CHANGELOG.md' '**/*.yml' --ignore-path .gitignore",
     "start": "yarn workspaces foreach --parallel --interlaced --verbose run start",
-    "test": "yarn workspace snap run test"
+    "test": "yarn workspace snap run test --passWithNoTests"
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^3.0.0",

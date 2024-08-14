@@ -1,17 +1,18 @@
 {
-  "version": "0.0.1",
-  "description": "Antelope on Metamask",
+  "version": "1.0.0",
+  "description": "MetaMask Snap allowing users to interact with Antelope networks",
   "proposedName": "Antelope",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+    "url": "https://github.com/@greymass/metamask-snap.git"
   },
   "source": {
-    "shasum": "4X7nZ0EHhVDhRIBfDNzV/T5771WqvxgL3qEEaYZwPmU=",
+    "shasum": "Q3Hsdgr2BoN0Fi+Yz25/Vz7jlNdAReFEFDJLkJKHHW4=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
-        "packageName": "@greymass/test-snap",
+        "iconPath": "src/assets/eos-logo.svg",
+        "packageName": "snap",
         "registry": "https://registry.npmjs.org/"
       }
     }

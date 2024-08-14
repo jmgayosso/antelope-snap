@@ -1,20 +1,21 @@
 {
 	"name": "site",
-	"version": "0.0.1",
-	"private": true,
+	"version": "1.0.0",
+	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"allow-scripts": "yarn workspace root allow-scripts",
 		"build": "vite build",
-		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check . && eslint .",
+		"dev": "vite dev",
 		"format": "prettier --write .",
-		"allow-scripts": "yarn workspace root allow-scripts",
+		"lint": "prettier --check . && eslint .",
+		"preview": "vite preview",
 		"start": "vite dev"
 	},
 	"dependencies": {
 		"@metamask/providers": "^17.0.0",
+		"@wharfkit/account-creation-plugin-metamask": "next",
 		"@wharfkit/session": "next",
 		"@wharfkit/transact-plugin-resource-provider": "^1.1.1",
 		"@wharfkit/wallet-plugin-metamask": "next",
@@ -43,6 +44,5 @@
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0-alpha.20",
 		"vite": "^5.0.3"
-	},
-	"type": "module"
+	}
 }
