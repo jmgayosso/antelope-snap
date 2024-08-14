@@ -4,10 +4,10 @@
   "proposedName": "Antelope",
   "repository": {
     "type": "git",
-    "url": "https://github.com/@greymass/metamask-snap.git"
+    "url": "https://github.com/@greymass/antelope-snap.git"
   },
   "source": {
-    "shasum": "Q3Hsdgr2BoN0Fi+Yz25/Vz7jlNdAReFEFDJLkJKHHW4=",
+    "shasum": "ZRXhKVwCKT0RTuBwE7IcYbge2YkMkQ5ogyteqFnmuwc=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",

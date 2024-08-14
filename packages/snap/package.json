@@ -4,7 +4,7 @@
   "description": "MetaMask Snap allowing users to interact with Antelope networks",
   "repository": {
     "type": "git",
-    "url": "https://github.com/@greymass/metamask-snap.git"
+    "url": "https://github.com/@greymass/antelope-snap.git"
   },
   "license": "MIT",
   "main": "./dist/bundle.js",

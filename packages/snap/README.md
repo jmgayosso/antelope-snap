@@ -1,4 +1,4 @@
-# @greymass/metamask-snap
+# @greymass/antelope-snap
 
 This is a Metamask Snap that provides a simple way to interface with [Antelope](https://eosnetwork.com/antelope/) blockchains using a Metamask wallet.
 
