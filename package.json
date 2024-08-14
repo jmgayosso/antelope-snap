@@ -1,15 +1,15 @@
 {
-  "name": "@greymass/metamask-snap",
+  "name": "@greymass/antelope-snap",
   "version": "1.0.0",
   "private": true,
   "description": "",
-  "homepage": "https://github.com/@greymass/metamask-snap#readme",
+  "homepage": "https://github.com/@greymass/antelope-snap#readme",
   "bugs": {
-    "url": "https://github.com/@greymass/metamask-snap/issues"
+    "url": "https://github.com/@greymass/antelope-snap/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/@greymass/metamask-snap.git"
+    "url": "git+https://github.com/@greymass/antelope-snap.git"
   },
   "license": "MIT",
   "author": "",
