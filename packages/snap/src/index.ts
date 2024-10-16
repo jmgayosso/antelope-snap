@@ -18,7 +18,6 @@ const HELP_URL = 'https://unicove.com/eos/metamask';
  * @returns A confirmation message to the user.
  */
 export const onInstall: OnInstallHandler = async () => {
-  console.log('onINSTALL');
   await snap.request({
     method: 'snap_dialog',
     params: {
