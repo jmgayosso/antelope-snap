@@ -29,7 +29,7 @@ export async function getPublicKey(request: AntelopeRequest): Promise<string> {
   return String(await derivePublicKey(chain));
 }
 
-const MAX_TRANSACTION_LENGTH = 10000;
+const MAX_TRANSACTION_LENGTH = 100_000;
 
 export async function signTransaction(
   request: AntelopeSignatureRequest,
