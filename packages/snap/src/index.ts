@@ -43,7 +43,6 @@ export const onInstall: OnInstallHandler = async () => {
  * @throws If the request method is not valid for this snap.
  */
 export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
-  console.log(request);
   switch (request.method) {
     case 'antelope_getPublicKey':
       return await getPublicKey(request as AntelopeRequest);
