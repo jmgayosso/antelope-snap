@@ -9,7 +9,7 @@ import {
 import { getPublicKey, signTransaction } from './rpc';
 import { AntelopeRequest, AntelopeSignatureRequest } from './types';
 
-const SNAP_NAME = 'Antelope MetaMask';
+const SNAP_NAME = 'EOS Wallet';
 const HELP_URL = 'https://unicove.com/eos/metamask';
 
 /**
