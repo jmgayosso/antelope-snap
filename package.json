@@ -2,17 +2,17 @@
   "name": "@greymass/antelope-snap",
   "version": "1.0.0",
   "private": true,
-  "description": "",
-  "homepage": "https://github.com/@greymass/antelope-snap#readme",
+  "description": "Template for deploying Antelope-based snaps. See branches for specific networks.",
+  "homepage": "https://github.com/greymass/antelope-snap",
   "bugs": {
-    "url": "https://github.com/@greymass/antelope-snap/issues"
+    "url": "https://github.com/greymass/antelope-snap"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/@greymass/antelope-snap.git"
+    "url": "git+https://github.com/greymass/antelope-snap.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": "Greymass Inc.",
   "type": "module",
   "workspaces": [
     "packages/*"
