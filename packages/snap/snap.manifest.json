@@ -28,15 +28,6 @@
     "snap_getBip44Entropy": [
       {
         "coinType": 194
-      },
-      {
-        "coinType": 235
-      },
-      {
-        "coinType": 977
-      },
-      {
-        "coinType": 14001
       }
     ]
   },
