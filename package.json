@@ -1,5 +1,5 @@
 {
-  "name": "@greymass/antelope-snap",
+  "name": "root",
   "version": "1.0.0",
   "private": true,
   "description": "Template for deploying Antelope-based snaps. See branches for specific networks.",

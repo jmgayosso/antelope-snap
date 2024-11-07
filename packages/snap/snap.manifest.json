@@ -7,12 +7,12 @@
     "url": "https://github.com/@greymass/antelope-snap.git"
   },
   "source": {
-    "shasum": "j6wHsDvhLhjGelQftpzx8OIESP3/9C0xeRDoLdSJ+/Q=",
+    "shasum": "3Zx4bfEsCEMPR5PCWwZQeyhFafMyzxkKe/aId+6OkRg=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
         "iconPath": "src/assets/eos-logo.svg",
-        "packageName": "snap",
+        "packageName": "@greymass/eos-wallet",
         "registry": "https://registry.npmjs.org/"
       }
     }
