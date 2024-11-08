@@ -25,7 +25,7 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '!**/CHANGELOG.md' '**/*.yml' --ignore-path .gitignore",
     "publish:snap": "yarn workspace @greymass/eos-wallet npm publish --access public --tag next",
     "start": "yarn workspaces foreach --parallel --interlaced --verbose run start",
-    "test": "yarn workspace snap run test --passWithNoTests"
+    "test": "yarn workspace @greymass/eos-wallet run test --passWithNoTests"
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^3.0.0",
