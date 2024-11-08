@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Use MetaMask with the BLOCKCHAIN Network",
   "proposedName": "BLOCKCHAIN Wallet",
   "repository": {
@@ -7,12 +7,12 @@
     "url": "https://github.com/@greymass/antelope-snap.git"
   },
   "source": {
-    "shasum": "j6wHsDvhLhjGelQftpzx8OIESP3/9C0xeRDoLdSJ+/Q=",
+    "shasum": "QZEb6DgW92HtGAuSJNpfWGNKBWGv/A3xlll2fiL4H5c=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
         "iconPath": "src/assets/eos-logo.svg",
-        "packageName": "snap",
+        "packageName": "@greymass/eos-wallet",
         "registry": "https://registry.npmjs.org/"
       }
     }
