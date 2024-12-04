@@ -12,12 +12,11 @@ import { ChainDefinition, Chains, chainIdsToIndices } from '@wharfkit/common';
 import {
   deriveActivePublicKey,
   deriveOwnerPublicKey,
-  deriveOwnerPrivateKey,
   deriveActivePrivateKey,
 } from './lib/keyDeriver';
 import {
   AntelopeGetActivePublicKeyRequest,
-  AntelopeRequest,
+  AntelopeGetOwnerPublicKeyRequest,
   AntelopeSignatureRequest,
 } from './types';
 
@@ -30,7 +29,7 @@ export function chainIdToDefinition(chainId: Checksum256Type): ChainDefinition {
 }
 
 export async function getOwnerPublicKey(
-  request: AntelopeRequest,
+  request: AntelopeGetOwnerPublicKeyRequest,
 ): Promise<string> {
   if (!request.params?.chainId) {
     throw new Error('Missing chainId in request params');
@@ -41,7 +40,7 @@ export async function getOwnerPublicKey(
 }
 
 export async function getActivePublicKey(
-  request: AntelopeRequest,
+  request: AntelopeGetActivePublicKeyRequest,
   keyIndex = 1,
 ): Promise<string> {
   if (!request.params?.chainId) {

@@ -1,11 +1,4 @@
 import { JsonRpcRequest } from '@metamask/snaps-sdk';
-import { ChainDefinition } from '@wharfkit/common';
-
-export interface AntelopeRequest extends JsonRpcRequest {
-  params?: {
-    chainId: string;
-  };
-}
 
 export interface AntelopeSignatureRequest extends JsonRpcRequest {
   params?: {
