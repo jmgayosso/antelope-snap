@@ -30,7 +30,7 @@ async function getKeyDeriver(chain: ChainDefinition) {
  */
 async function derivePrivateKey(
   chain: ChainDefinition,
-  keyIndex = 0,
+  keyIndex = 1, // default to first active key
 ): Promise<PrivateKey> {
   const keyDeriver = await getKeyDeriver(chain);
   const derived = await keyDeriver(keyIndex);
