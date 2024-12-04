@@ -24,16 +24,16 @@ async function getKeyDeriver(chain: ChainDefinition) {
 /**
  * Derive an Antelope private key from the key tree at the given address index.
  *
- * @param addressIndex - The index of the address to derive.
+ * @param keyIndex - The index of the key to derive.
  * @returns The private key.
  * @throws If the key tree is not initialized.
  */
 async function derivePrivateKey(
   chain: ChainDefinition,
-  addressIndex = 0,
+  keyIndex = 0,
 ): Promise<PrivateKey> {
   const keyDeriver = await getKeyDeriver(chain);
-  const derived = await keyDeriver(addressIndex);
+  const derived = await keyDeriver(keyIndex);
 
   if (!derived.privateKeyBytes) {
     throw new Error('Private key not found');
@@ -59,15 +59,15 @@ export async function deriveOwnerPublicKey(
  * Derive an Antelope active public key from the key tree.
  * Cannot use index 0 which is reserved for owner permissions.
  *
- * @param addressIndex - The index of the address to derive (must not be 0).
+ * @param keyIndex - The index of the address to derive (must not be 0).
  * @returns The active public key.
  * @throws If the key tree is not initialized or if index 0 is used.
  */
 export async function deriveActivePublicKey(
   chain: ChainDefinition,
-  addressIndex = 1,
+  keyIndex = 1,
 ): Promise<PublicKey> {
-  return (await deriveActivePrivateKey(chain, addressIndex)).toPublic();
+  return (await deriveActivePrivateKey(chain, keyIndex)).toPublic();
 }
 
 /**
@@ -87,16 +87,16 @@ export async function deriveOwnerPrivateKey(
  * Derive an Antelope active private key from the key tree.
  * Cannot use index 0 which is reserved for owner permissions.
  *
- * @param addressIndex - The index of the address to derive (must not be 0).
+ * @param keyIndex - The index of the address to derive (must not be 0).
  * @returns The active private key.
  * @throws If the key tree is not initialized or if index 0 is used.
  */
 export async function deriveActivePrivateKey(
   chain: ChainDefinition,
-  addressIndex = 1,
+  keyIndex = 1,
 ): Promise<PrivateKey> {
-  if (addressIndex === 0) {
-    throw new Error('Index 0 is reserved for owner keys');
+  if (keyIndex === 0) {
+    throw new Error('Index 0 is reserved for the owner key');
   }
-  return derivePrivateKey(chain, addressIndex);
+  return derivePrivateKey(chain, keyIndex);
 }

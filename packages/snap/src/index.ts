@@ -62,6 +62,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
       return String(await signTransaction(request as AntelopeSignatureRequest));
 
     default:
+      // eslint-disable-next-line @typescript-eslint/no-throw-literal
       throw new MethodNotFoundError(request.method);
   }
 };

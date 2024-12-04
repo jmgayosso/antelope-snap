@@ -42,14 +42,14 @@ export async function getOwnerPublicKey(
 
 export async function getActivePublicKey(
   request: AntelopeRequest,
-  addressIndex = 1,
+  keyIndex = 1,
 ): Promise<string> {
   if (!request.params?.chainId) {
     throw new Error('Missing chainId in request params');
   }
   const chain = chainIdToDefinition(request.params.chainId);
 
-  return String(await deriveActivePublicKey(chain, addressIndex));
+  return String(await deriveActivePublicKey(chain, keyIndex));
 }
 
 const MAX_TRANSACTION_LENGTH = 100_000;
