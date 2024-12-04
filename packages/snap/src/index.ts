@@ -6,8 +6,12 @@ import {
   panel,
 } from '@metamask/snaps-sdk';
 
-import { getPublicKey, signTransaction } from './rpc';
-import { AntelopeRequest, AntelopeSignatureRequest } from './types';
+import { signTransaction, getOwnerPublicKey, getActivePublicKey } from './rpc';
+import type {
+  AntelopeSignatureRequest,
+  AntelopeGetOwnerPublicKeyRequest,
+  AntelopeGetActivePublicKeyRequest,
+} from './types';
 
 const SNAP_NAME = 'EOS Wallet';
 const HELP_URL = 'https://unicove.com/eos/metamask';
@@ -44,14 +48,20 @@ export const onInstall: OnInstallHandler = async () => {
  */
 export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
   switch (request.method) {
-    case 'antelope_getPublicKey':
-      return await getPublicKey(request as AntelopeRequest);
+    case 'antelope_getOwnerPublicKey':
+      return await getOwnerPublicKey(
+        request as AntelopeGetOwnerPublicKeyRequest,
+      );
+
+    case 'antelope_getActivePublicKey':
+      return await getActivePublicKey(
+        request as AntelopeGetActivePublicKeyRequest,
+      );
 
     case 'antelope_signTransaction':
       return String(await signTransaction(request as AntelopeSignatureRequest));
 
     default:
-      // eslint-disable-next-line @typescript-eslint/no-throw-literal
       throw new MethodNotFoundError(request.method);
   }
 };

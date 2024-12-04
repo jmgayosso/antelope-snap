@@ -9,8 +9,17 @@ import {
 } from '@wharfkit/antelope';
 import { ChainDefinition, Chains, chainIdsToIndices } from '@wharfkit/common';
 
-import { derivePrivateKey, derivePublicKey } from './lib/keyDeriver';
-import { AntelopeRequest, AntelopeSignatureRequest } from './types';
+import {
+  deriveActivePublicKey,
+  deriveOwnerPublicKey,
+  deriveOwnerPrivateKey,
+  deriveActivePrivateKey,
+} from './lib/keyDeriver';
+import {
+  AntelopeGetActivePublicKeyRequest,
+  AntelopeRequest,
+  AntelopeSignatureRequest,
+} from './types';
 
 export function chainIdToDefinition(chainId: Checksum256Type): ChainDefinition {
   const index = chainIdsToIndices.get(String(chainId));
@@ -20,13 +29,27 @@ export function chainIdToDefinition(chainId: Checksum256Type): ChainDefinition {
   return Chains[index];
 }
 
-export async function getPublicKey(request: AntelopeRequest): Promise<string> {
+export async function getOwnerPublicKey(
+  request: AntelopeRequest,
+): Promise<string> {
   if (!request.params?.chainId) {
     throw new Error('Missing chainId in request params');
   }
   const chain = chainIdToDefinition(request.params.chainId);
 
-  return String(await derivePublicKey(chain));
+  return String(await deriveOwnerPublicKey(chain));
+}
+
+export async function getActivePublicKey(
+  request: AntelopeRequest,
+  addressIndex = 1,
+): Promise<string> {
+  if (!request.params?.chainId) {
+    throw new Error('Missing chainId in request params');
+  }
+  const chain = chainIdToDefinition(request.params.chainId);
+
+  return String(await deriveActivePublicKey(chain, addressIndex));
 }
 
 const MAX_TRANSACTION_LENGTH = 100_000;
@@ -115,7 +138,10 @@ export async function signTransaction(
 
   // If confirmed, sign the transaction
   if (confirmed) {
-    const privateKey = await derivePrivateKey(chain);
+    const privateKey = await deriveActivePrivateKey(
+      chain,
+      request.params?.keyIndex,
+    );
     return privateKey.signDigest(transaction.signingDigest(chain.id));
   }
 
