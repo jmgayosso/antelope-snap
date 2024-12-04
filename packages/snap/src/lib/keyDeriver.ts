@@ -98,5 +98,6 @@ export async function deriveActivePrivateKey(
   if (keyIndex === 0) {
     throw new Error('Index 0 is reserved for the owner key');
   }
+  console.log('deriving active private key', keyIndex);
   return derivePrivateKey(chain, keyIndex);
 }
