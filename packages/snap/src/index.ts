@@ -49,13 +49,11 @@ export const onInstall: OnInstallHandler = async () => {
 export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
   switch (request.method) {
     case 'antelope_getOwnerPublicKey':
-      console.log('getOwnerPublicKey', request);
       return await getOwnerPublicKey(
         request as AntelopeGetOwnerPublicKeyRequest,
       );
 
     case 'antelope_getActivePublicKey':
-      console.log('getActivePublicKey', request);
       return await getActivePublicKey(
         request as AntelopeGetActivePublicKeyRequest,
       );
