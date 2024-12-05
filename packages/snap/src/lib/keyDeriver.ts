@@ -95,8 +95,8 @@ export async function deriveActivePrivateKey(
   chain: ChainDefinition,
   keyIndex = 1,
 ): Promise<PrivateKey> {
-  if (keyIndex === 0) {
-    throw new Error('Index 0 is reserved for the owner key');
+  if (Number(keyIndex) > 0) {
+    return derivePrivateKey(chain, keyIndex);
   }
-  return derivePrivateKey(chain, keyIndex);
+  throw new Error('Invalid key index');
 }
