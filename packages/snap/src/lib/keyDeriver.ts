@@ -96,7 +96,7 @@ export async function deriveActivePrivateKey(
   keyIndex = 1,
 ): Promise<PrivateKey> {
   if (Number(keyIndex) > 0) {
-    return derivePrivateKey(chain, keyIndex);
+    return derivePrivateKey(chain, Number(keyIndex));
   }
   throw new Error('Invalid key index');
 }
