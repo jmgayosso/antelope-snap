@@ -1,7 +1,6 @@
 {
   "name": "@jmgayosso/antelopesnap",
-  "version": "0.0.1",
-  "private": false,
+  "version": "0.0.2",
   "description": "Template for deploying Antelope-based snaps. See branches for specific networks.",
   "homepage": "https://github.com/jmgayosso/antelope-snap",
   "bugs": {
