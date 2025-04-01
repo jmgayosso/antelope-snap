@@ -1,7 +1,7 @@
 {
-  "name": "root",
+  "name": "@jmgayosso/antelope-snap",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "Template for deploying Antelope-based snaps. See branches for specific networks.",
   "homepage": "https://github.com/greymass/antelope-snap",
   "bugs": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/greymass/antelope-snap.git"
+    "url": "git+https://github.com/jmgayosso/antelope-snap.git"
   },
   "license": "MIT",
   "author": "Greymass Inc.",
